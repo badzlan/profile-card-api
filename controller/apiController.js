@@ -25,7 +25,7 @@ const register = async (req, res) => {
 
    try {
       const user = await userRegister(username, fullname, city, country, job, password);
-      res.status(201).send({ msg: "User Register Successfully", data: user });
+      res.status(201).send({ msg: "Register Successfully" });
    } catch (error) {
       res.status(400).json({ error: error.message });
    }
@@ -79,7 +79,7 @@ const edit = async (req, res) => {
    const { username } = req.params;
    try {
       User.updateOne({username}, req.body)
-         .then(() => res.json({ msg: "User Updated Succesfully" }))
+         .then(res.json({ msg: "Updated Succesfully"}))
          .catch((error) => res.status(404).json({ error: error.message }));
    } catch (error) {
       res.status(400).json({ error: error.message });
