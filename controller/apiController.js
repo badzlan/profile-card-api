@@ -35,20 +35,19 @@ const login = async (req, res) => {
    const { username, password } = req.body;
 
    const userLogin = async (username, password) => {
-      
-      if(!username || !password){
+      if (!username || !password) {
          throw Error("All field is required");
-      };
-      
+      }
+
       const user = await User.findOne({ username });
-      if(!user){
+      if (!user) {
          throw Error("Incorrect Username");
-      };
-      
+      }
+
       const match = await bcrypt.compare(password, user.password);
-      if(!match){
+      if (!match) {
          throw Error("Incorrect Password");
-      };
+      }
 
       return user;
    };
@@ -56,14 +55,24 @@ const login = async (req, res) => {
    try {
       const user = await userLogin(username, password);
       const token = createToken(user._id);
-      res.status(201).send({ msg: "Login Successful", username, token });
+      res.status(201).send({ msg: "Login Successfully", username, token });
    } catch (error) {
       res.status(400).json({ error: error.message });
    }
 };
 
 const user = async (req, res) => {
-   res.json("User route");
+   const { username } = req.params;
+
+   try {
+      const user = await User.findOne({ username });
+      if (user) {
+         const { password, ...data } = Object.assign({}, user.toJSON());
+         res.status(201).send({ data });
+      }
+   } catch (error) {
+      res.status(400).json({ error: error.message });
+   }
 };
 
 const edit = async (req, res) => {

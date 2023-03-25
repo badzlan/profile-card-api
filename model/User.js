@@ -44,6 +44,6 @@ const userSchema = new mongoose.Schema({
    twitter: {
       type: String,
    },
-})
+})image.png;
 
 export default mongoose.model.Users || mongoose.model('User', userSchema);
