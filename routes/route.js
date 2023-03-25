@@ -1,15 +1,15 @@
-import * as appControlller from '../controller/appController.js'
+import * as apiController from '../controller/apiController.js'
 import { Router } from "express";
 const router = Router();
 
 // auth
-router.post('/login', appControlller.login);
-router.post('/register', appControlller.register);
+router.post('/register', apiController.register);
+router.post('/login', apiController.login);
 
 // user
-router.get('/user/:username', appControlller.user);
+router.get('/user/:username', apiController.user);
 
 // edit user
-router.put('/edit', appControlller.edit);
+router.put('/edit', apiController.edit);
 
 export default router;
