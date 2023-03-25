@@ -58,7 +58,7 @@ const login = async (req, res) => {
       res.status(201).send({ msg: "Login Successfully", username, token });
    } catch (error) {
       res.status(400).json({ error: error.message });
-   }
+   };
 };
 
 const user = async (req, res) => {
@@ -72,11 +72,18 @@ const user = async (req, res) => {
       }
    } catch (error) {
       res.status(400).json({ error: error.message });
-   }
+   };
 };
 
 const edit = async (req, res) => {
-   res.json("Edit route");
+   const { username } = req.params;
+   try {
+      User.updateOne({username}, req.body)
+         .then(() => res.json({ message: "User Updated Succesfully" }))
+         .catch((error) => res.status(404).json({ error: error.message }));
+   } catch (error) {
+      res.status(400).json({ error: error.message });
+   };
 };
 
-export { login, register, user, edit };
+export default { login, register, user, edit };

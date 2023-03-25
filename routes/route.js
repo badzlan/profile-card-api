@@ -7,9 +7,9 @@ router.post('/register', apiController.register);
 router.post('/login', apiController.login);
 
 // user
-router.get('/user/:username', apiController.user);
+router.get('/:username', apiController.user);
 
 // edit user
-router.put('/edit', apiController.edit);
+router.put('/:username/edit', apiController.edit);
 
 export default router;
