@@ -25,7 +25,7 @@ const register = async (req, res) => {
 
    try {
       const user = await userRegister(username, fullname, city, country, job, password);
-      res.status(201).send({ msg: "User Register Successfully", user });
+      res.status(201).send({ msg: "User Register Successfully", data: user });
    } catch (error) {
       res.status(400).json({ error: error.message });
    }
@@ -58,7 +58,7 @@ const login = async (req, res) => {
       res.status(201).send({ msg: "Login Successfully", username, token });
    } catch (error) {
       res.status(400).json({ error: error.message });
-   };
+   }
 };
 
 const user = async (req, res) => {
@@ -72,18 +72,18 @@ const user = async (req, res) => {
       }
    } catch (error) {
       res.status(400).json({ error: error.message });
-   };
+   }
 };
 
 const edit = async (req, res) => {
    const { username } = req.params;
    try {
       User.updateOne({username}, req.body)
-         .then(() => res.json({ message: "User Updated Succesfully" }))
+         .then(() => res.json({ msg: "User Updated Succesfully" }))
          .catch((error) => res.status(404).json({ error: error.message }));
    } catch (error) {
       res.status(400).json({ error: error.message });
-   };
+   }
 };
 
-export default { login, register, user, edit };
+export { login, register, user, edit };
