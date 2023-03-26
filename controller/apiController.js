@@ -4,7 +4,7 @@ import User from "../model/User.js";
 import env from "../env.js";
 
 const createToken = (_id) => {
-   return jwt.sign({ _id }, env.JWT_SECRET, { expiresIn: "3d" });
+   return jwt.sign({ _id }, env.JWT_SECRET);
 };
 
 const register = async (req, res) => {
@@ -19,13 +19,7 @@ const register = async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(password, salt);
 
-      await User.create({ 
-         username, 
-         fullname, 
-         city, 
-         country, 
-         job, 
-         password: hash 
+      await User.create({ username, fullname, city, country, job, password: hash 
       });
 
       res.status(201).send({ msg: "Register Successfully" });
