@@ -10,21 +10,23 @@ const createToken = (_id) => {
 const register = async (req, res) => {
    const { username, fullname, city, country, job, password } = req.body;
 
-   const userRegister = async (username, fullname, city, country, job, password) => {
+   try {
       const exist = await User.findOne({ username });
-
       if (exist) {
          throw Error("Username Exist!");
       }
 
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(password, salt);
-      const user = await User.create({ username, fullname, city, country, job, password: hash });
-      return user;
-   };
 
-   try {
-      const user = await userRegister(username, fullname, city, country, job, password);
+      await User.create({ 
+         username, 
+         fullname, 
+         city, 
+         country, 
+         job, 
+         password: hash 
+      });
       res.status(201).send({ msg: "Register Successfully" });
    } catch (error) {
       res.status(400).json({ error: error.message });
