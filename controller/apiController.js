@@ -27,6 +27,7 @@ const register = async (req, res) => {
          job, 
          password: hash 
       });
+
       res.status(201).send({ msg: "Register Successfully" });
    } catch (error) {
       res.status(400).json({ error: error.message });
@@ -34,13 +35,9 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-   const { username, password } = req.body;
+   const { username, password } = req.body;y
 
-   const userLogin = async (username, password) => {
-      if (!username || !password) {
-         throw Error("All field is required");
-      }
-
+   try {
       const user = await User.findOne({ username });
       if (!user) {
          throw Error("Incorrect Username");
@@ -51,11 +48,6 @@ const login = async (req, res) => {
          throw Error("Incorrect Password");
       }
 
-      return user;
-   };
-
-   try {
-      const user = await userLogin(username, password);
       const token = createToken(user._id);
       res.status(201).send({ msg: "Login Successfully", username, token });
    } catch (error) {
