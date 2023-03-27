@@ -7,7 +7,7 @@ const createToken = (_id) => {
    return jwt.sign({ _id }, env.JWT_SECRET);
 };
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
    const { username, fullname, city, country, job, password } = req.body;
 
    try {
@@ -28,8 +28,8 @@ const register = async (req, res) => {
    }
 };
 
-const login = async (req, res) => {
-   const { username, password } = req.body;y
+export const login = async (req, res) => {
+   const { username, password } = req.body;
 
    try {
       const user = await User.findOne({ username });
@@ -49,7 +49,7 @@ const login = async (req, res) => {
    }
 };
 
-const user = async (req, res) => {
+export const user = async (req, res) => {
    const { username } = req.params;
 
    try {
@@ -63,7 +63,7 @@ const user = async (req, res) => {
    }
 };
 
-const edit = async (req, res) => {
+export const edit = async (req, res) => {
    const { username } = req.params;
    try {
       User.updateOne({username}, req.body)
@@ -74,4 +74,4 @@ const edit = async (req, res) => {
    }
 };
 
-export { login, register, user, edit };
+// export { login, register, user, edit };
