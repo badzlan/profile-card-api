@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
    },
    avatar: {
       type: String,
+      default: "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png"
    },
    background: {
       type: String,
