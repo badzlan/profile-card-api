@@ -26,6 +26,5 @@ connect()
    })
    .catch((error) => {
       console.log("Invalid database connection!");
-      console.log(process.env.DB_URL);
       console.log(error);
    });
