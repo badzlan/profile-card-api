@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
-import env from "../env.js";
+import { config } from "dotenv";
+
+config({path: '.env'});
 
 const connect = async () => {
    mongoose.set('strictQuery', true);
-   const db = await mongoose.connect(env.DB_URL);
+   const db = await mongoose.connect(process.env.DB_URL);
    console.log("Database Connected");
    return db;
 };

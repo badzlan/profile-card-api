@@ -1,10 +1,12 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../model/User.js";
-import env from "../env.js";
+import { config } from "dotenv";
+
+config({path: '.env'})
 
 const createToken = (_id) => {
-   return jwt.sign({ _id }, env.JWT_SECRET);
+   return jwt.sign({ _id }, process.env.JWT_SECRET);
 };
 
 export const register = async (req, res) => {
