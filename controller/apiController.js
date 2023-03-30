@@ -74,4 +74,4 @@ export const edit = async (req, res) => {
    }
 };
 
-// export { login, register, user, edit };
+export { login, register, user, edit };

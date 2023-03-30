@@ -4,5 +4,5 @@ config({path: '.env'});
 
 mongoose.connect(process.env.DB_URL);
 mongoose.connection.on('open', ()=>{
-   console.log('Database Connected');
+   console.log('Database Connected');
 })
