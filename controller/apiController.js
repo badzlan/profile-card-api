@@ -21,12 +21,7 @@ export const register = async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(password, salt);
 
-      if(cpassword === password){
-         await User.create({ username, fullname, city, country, job, password: hash });
-      } else {
-         throw Error("Confirm password & Password didn't match!");
-      }
-
+      await User.create({ username, fullname, city, country, job, password: hash });
       res.status(201).send({ msg: "Register Successfully" });
    } catch (error) {
       res.status(400).json({ error: error.message });
