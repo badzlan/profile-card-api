@@ -9,7 +9,7 @@ const createToken = (_id) => {
    return jwt.sign({ _id }, process.env.JWT_SECRET);
 };
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
    const { username, fullname, city, country, job, password, cpassword } = req.body;
 
    try {
@@ -28,7 +28,7 @@ export const register = async (req, res) => {
    }
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
    const { username, password } = req.body;
 
    try {
@@ -49,7 +49,7 @@ export const login = async (req, res) => {
    }
 };
 
-export const user = async (req, res) => {
+const user = async (req, res) => {
    const { username } = req.params;
 
    try {
@@ -63,7 +63,7 @@ export const user = async (req, res) => {
    }
 };
 
-export const edit = async (req, res) => {
+const edit = async (req, res) => {
    const { username } = req.params;
    try {
       User.updateOne({username}, req.body)
