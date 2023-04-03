@@ -44,7 +44,7 @@
 #### Edit User Data
 
 ```http
-  GET /api/${username}/edit
+  PUT /api/${username}/edit
 ```
 
 | Parameter  | Type     | Description                             |
