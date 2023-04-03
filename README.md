@@ -37,9 +37,9 @@
   GET /api/${username}
 ```
 
-| Parameter  | Type     | Description                             |
-| :--------- | :------- | :-------------------------------------- |
-| `username` | `string` | **Required**. Username of user to fetch |
+| Parameter  | Type     | Description                                         |
+| :--------- | :------- | :-------------------------------------------------- |
+| `username` | `string` | **Required**. **Unique**. Username of user to fetch |
 
 | Bearer Token | Type     | Description                            |
 | :----------- | :------- | :------------------------------------- |
@@ -53,9 +53,9 @@
   PUT /api/${username}/edit
 ```
 
-| Parameter  | Type     | Description                             |
-| :--------- | :------- | :-------------------------------------- |
-| `username` | `string` | **Required**. Username of user to fetch |
+| Parameter  | Type     | Description                                         |
+| :--------- | :------- | :-------------------------------------------------- |
+| `username` | `string` | **Required**. **Unique**. Username of user to fetch |
 
 | Bearer Token | Type     | Description                            |
 | :----------- | :------- | :------------------------------------- |
