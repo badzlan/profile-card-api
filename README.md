@@ -16,6 +16,17 @@
 | `job`        | `string` | **Required**. Job for register user                  |
 | `password`   | `string` | **Required**. Password for register user             |
 
+#### User Login
+
+```http
+  POST /api/login
+```
+
+| Request Body | Type     | Description                                       |
+| :----------- | :------- | :------------------------------------------------ |
+| `username`   | `string` | **Required**. **Unique**. Username for login user |
+| `password`   | `string` | **Required**. Password for login user             |
+
 #### Get item
 
 ```http
