@@ -27,15 +27,19 @@
 | `username`   | `string` | **Required**. **Unique**. Username for login user |
 | `password`   | `string` | **Required**. Password for login user             |
 
-#### Get item
+#### Get User
 
 ```http
-  GET /api/items/${id}
+  GET /api/${username}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+| Parameter  | Type     | Description                             |
+| :--------- | :------- | :-------------------------------------- |
+| `username` | `string` | **Required**. Username of user to fetch |
+
+| Bearer Token | Type     | Description                            |
+| :----------- | :------- | :------------------------------------- |
+| `token`      | `string` | **Required**. Authorization user token |
 
 #### add(num1, num2)
 
