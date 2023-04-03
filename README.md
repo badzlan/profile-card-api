@@ -16,6 +16,8 @@
 | `job`        | `string` | **Required**. Job for register user                  |
 | `password`   | `string` | **Required**. Password for register user             |
 
+------------------------------------------------------------------------------------
+
 #### User Login
 
 ```http
@@ -26,6 +28,8 @@
 | :----------- | :------- | :------------------------------------------------ |
 | `username`   | `string` | **Required**. **Unique**. Username for login user |
 | `password`   | `string` | **Required**. Password for login user             |
+
+------------------------------------------------------------------------------------
 
 #### Get User
 
@@ -40,6 +44,8 @@
 | Bearer Token | Type     | Description                            |
 | :----------- | :------- | :------------------------------------- |
 | `token`      | `string` | **Required**. Authorization user token |
+
+------------------------------------------------------------------------------------
 
 #### Edit User Data
 
