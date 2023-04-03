@@ -1,15 +1,20 @@
 
 ## API Reference
 
-#### Get all items
+#### User Register
 
 ```http
-  GET /api/items
+  POST /api/register
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| Request Body | Type     | Description                                          |
+| :----------- | :------- | :--------------------------------------------------- |
+| `username`   | `string` | **Required**. **Unique**. Username for register user |
+| `fullname`   | `string` | **Required**. Fullname for register user             |
+| `city`       | `string` | **Required**. City for register user                 |
+| `country`    | `string` | **Required**. Country for register user              |
+| `job`        | `string` | **Required**. Job for register user                  |
+| `password`   | `string` | **Required**. Password for register user             |
 
 #### Get item
 
