@@ -50,8 +50,7 @@ const login = async (req, res) => {
 };
 
 const user = async (req, res) => {
-   const token = req.headers.authorization.split(" ")[1];
-   const { username } = jwt.verify(token, process.env.JWT_SECRET);
+   const { username } = req.user
 
    try {
       const user = await User.findOne({ username });
@@ -65,8 +64,7 @@ const user = async (req, res) => {
 };
 
 const edit = async (req, res) => {
-   const token = req.headers.authorization.split(" ")[1];
-   const { username } = jwt.verify(token, process.env.JWT_SECRET);
+   const { username } = req.user
 
    try {
       User.updateOne({ username }, req.body)
