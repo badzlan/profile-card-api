@@ -14,7 +14,7 @@ app.use(morgan("tiny"));
 app.use("/api", routes);
 
 app.get("/", (req, res) => {
-   res.status(200).send({ msg: "API on /api" });
+   res.status(200).send({ msg: "API Docs on /api" });
 });
 
 app.listen(port, () => {
