@@ -3,10 +3,10 @@ import jwt from "jsonwebtoken";
 import User from "../model/User.js";
 import { config } from "dotenv";
 
-config({path: '.env'})
+config({ path: ".env" });
 
-const createToken = (_id) => {
-   return jwt.sign({ _id }, process.env.JWT_SECRET);
+const createToken = (username) => {
+   return jwt.sign({ username }, process.env.JWT_SECRET);
 };
 
 const register = async (req, res) => {
@@ -42,7 +42,7 @@ const login = async (req, res) => {
          throw Error("Incorrect Password");
       }
 
-      const token = createToken(user._id);
+      const token = createToken(user.username);
       res.status(201).send({ msg: "Login Successfully", username, token });
    } catch (error) {
       res.status(400).json({ error: error.message });
@@ -50,7 +50,8 @@ const login = async (req, res) => {
 };
 
 const user = async (req, res) => {
-   const { username } = req.params;
+   const token = req.headers.authorization.split(" ")[1];
+   const { username } = jwt.verify(token, process.env.JWT_SECRET);
 
    try {
       const user = await User.findOne({ username });
@@ -64,10 +65,12 @@ const user = async (req, res) => {
 };
 
 const edit = async (req, res) => {
-   const { username } = req.params;
+   const token = req.headers.authorization.split(" ")[1];
+   const { username } = jwt.verify(token, process.env.JWT_SECRET);
+
    try {
-      User.updateOne({username}, req.body)
-         .then(res.json({ msg: "Updated Succesfully"}))
+      User.updateOne({ username }, req.body)
+         .then(res.json({ msg: "Updated Succesfully" }))
          .catch((error) => res.status(404).json({ error: error.message }));
    } catch (error) {
       res.status(400).json({ error: error.message });
